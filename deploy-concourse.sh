@@ -10,8 +10,8 @@ bosh deploy -d concourse $CONCOURSE_BOSH_DEPLOYMENT/cluster/concourse.yml \
    -v network_name=default \
    -v web_network_name=default \
    -v web_network_vm_extension=lb \
-   -v external_host=concourse.pivotal-pre-course.io \
-   -v external_url="https://concourse.pivotal-pre-course.io" \
+   -v external_host=concourse.example.com \
+   -v external_url="https://concourse.example.com" \
    -v web_vm_type=large \
    -v db_vm_type=large \
    -v worker_vm_type=extra-large \
