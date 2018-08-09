@@ -16,6 +16,23 @@ This repo contains operations files that are meant to be used in conjunction wit
 the manifests and operations files located at
 https://github.com/concourse/concourse-bosh-deployment
 
+### Prerequisites
+
+Concourse is now using Xenial stemcells, so upload the appropriate
+[stemcells](https://bosh.io/stemcells#ubuntu-xenial)  for your IaaS
+prior to running `deploy-concourse.sh`.
+
+Additionally, Concourse 4.0 expects a local user to exist.
+You can use Credhub to generate this user.  See the
+You can generate this by running:
+
+```
+$ credhub generate -t user -v /$(bbl env-id)/concourse/local_user
+```
+
+_Note:_ See [Connecting to your new Credhub](#connecting-to-your-new-credhub)
+for instructions on how to target Credhub.
+
 ## BBL Load Balancer
 
 By placing the Credhub and UAA servers on the same instances as Concourse's ATC,
