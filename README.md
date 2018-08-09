@@ -75,3 +75,18 @@ that you can source in order to target the Concourse Credhub.
 $ CONCOURSE_URL=https://concourse.example.com source target-concourse-credhub.sh
 $ credhub find
 ```
+
+## Connecting to Concourse
+
+If you used Credhub to generate the local user (see [Prerequisites](#prerequisites))
+then you can retrieve the credentials with the following command:
+
+```
+$ credhub get -n $(bbl env-id)/concourse/local_user
+```
+
+Once you have the credentials, log in with the `fly` CLI:
+
+```
+$ fly -t concourse login -c $CONCOURSE_URL -k
+```
