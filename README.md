@@ -27,7 +27,7 @@ You can use Credhub to generate this user.  See the
 You can generate this by running:
 
 ```
-$ credhub generate -t user -v /$(bbl env-id)/concourse/local_user
+$ credhub generate -t user -n /bosh-$(bbl env-id)/concourse/local_user
 ```
 
 _Note:_ See [Connecting to your new Credhub](#connecting-to-your-new-credhub)
@@ -82,7 +82,7 @@ If you used Credhub to generate the local user (see [Prerequisites](#prerequisit
 then you can retrieve the credentials with the following command:
 
 ```
-$ credhub get -n $(bbl env-id)/concourse/local_user
+$ credhub get -n bosh-$(bbl env-id)/concourse/local_user
 ```
 
 Once you have the credentials, log in with the `fly` CLI:
