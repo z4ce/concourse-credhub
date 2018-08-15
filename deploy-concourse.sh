@@ -1,7 +1,15 @@
 #!/bin/bash
 
 # local path to https://github.com/concourse/concourse-bosh-deployment
-CONCOURSE_BOSH_DEPLOYMENT=~/concourse-bosh-deployment
+if [ -z ${CONCOURSE_BOSH_DEPLOYMENT} ]; then
+  CONCOURSE_BOSH_DEPLOYMENT=~/concourse-bosh-deployment
+fi
+
+# export CONCOURSE_URL='concourse.example.com'
+if [ -z ${CONCOURSE_URL} ]; then
+  echo 'Please set $CONCOURSE_URL (dns or hostname).'
+  exit 1
+fi
 
 bosh deploy -d concourse $CONCOURSE_BOSH_DEPLOYMENT/cluster/concourse.yml \
    -l $CONCOURSE_BOSH_DEPLOYMENT/versions.yml \
@@ -10,8 +18,8 @@ bosh deploy -d concourse $CONCOURSE_BOSH_DEPLOYMENT/cluster/concourse.yml \
    -v network_name=default \
    -v web_network_name=default \
    -v web_network_vm_extension=lb \
-   -v external_host=concourse.example.com \
-   -v external_url="https://concourse.example.com" \
+   -v external_host=${CONCOURSE_URL} \
+   -v external_url="https://${CONCOURSE_URL}" \
    -v web_vm_type=large \
    -v db_vm_type=large \
    -v worker_vm_type=extra-large \
