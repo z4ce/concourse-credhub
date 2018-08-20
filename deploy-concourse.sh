@@ -5,9 +5,9 @@ if [ -z ${CONCOURSE_BOSH_DEPLOYMENT} ]; then
   CONCOURSE_BOSH_DEPLOYMENT=~/concourse-bosh-deployment
 fi
 
-# export CONCOURSE_URL='concourse.example.com'
-if [ -z ${CONCOURSE_URL} ]; then
-  echo 'Please set $CONCOURSE_URL (dns or hostname).'
+# export CONCOURSE_HOST='concourse.example.com'
+if [ -z ${CONCOURSE_HOST} ]; then
+  echo 'Please set $CONCOURSE_HOST (dns or hostname).'
   exit 1
 fi
 
@@ -18,8 +18,8 @@ bosh deploy -d concourse $CONCOURSE_BOSH_DEPLOYMENT/cluster/concourse.yml \
    -v network_name=default \
    -v web_network_name=default \
    -v web_network_vm_extension=lb \
-   -v external_host=${CONCOURSE_URL} \
-   -v external_url="https://${CONCOURSE_URL}" \
+   -v external_host=${CONCOURSE_HOST} \
+   -v external_url="https://${CONCOURSE_HOST}" \
    -v web_vm_type=large \
    -v db_vm_type=large \
    -v worker_vm_type=extra-large \
