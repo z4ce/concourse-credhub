@@ -124,7 +124,7 @@
           passphrase: ((encryption-keys-passphrase))
         active_key_label: 'KEY-1'
       uaa:
-        url: &uaa-url ((external_url)):8443
+        url: &uaa-url https://((external_host)):8443
         port: 8181
         logging_level: INFO
         scim:
